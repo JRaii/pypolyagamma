@@ -81,8 +81,6 @@ if not os.path.exists(gslpath):
     shutil.copytree(os.path.join(thedir), gslpath)
     print('...Done!')
 
-
-
 # Check if GSL has been configured
 if not os.path.exists(os.path.join(gslpath, "config.h")):
     # Run configure to make config.h
