@@ -95,26 +95,26 @@ if not os.path.exists(os.path.join(gslpath, "gsl", "gsl_rng.h")):
 # Manually define the list of sources, including GSL files
 include_dirs = \
     [
-        "cpp/include",
+        "pypolyagamma/cpp/include",
         "deps/gsl",
         "deps/gsl/gsl",
     ]
 
 headers = \
     [
-        "cpp/PolyaGammaHybrid.h",
-        "cpp/include/RNG.hpp"
+        "pypolyagamma/cpp/PolyaGammaHybrid.h",
+        "pypolyagamma/cpp/include/RNG.hpp"
     ]
 
 sources = \
     [
-        "cpp/PolyaGamma.cpp",
-        "cpp/PolyaGammaSmallB.cpp",
-        "cpp/PolyaGammaAlt.cpp",
-        "cpp/PolyaGammaSP.cpp",
-        "cpp/InvertY.cpp",
-        "cpp/include/RNG.cpp",
-        "cpp/include/GRNG.cpp",
+        "pypolyagamma/cpp/PolyaGamma.cpp",
+        "pypolyagamma/cpp/PolyaGammaSmallB.cpp",
+        "pypolyagamma/cpp/PolyaGammaAlt.cpp",
+        "pypolyagamma/cpp/PolyaGammaSP.cpp",
+        "pypolyagamma/cpp/InvertY.cpp",
+        "pypolyagamma/cpp/include/RNG.cpp",
+        "pypolyagamma/cpp/include/GRNG.cpp",
         "deps/gsl/rng/mt.c",
         "deps/gsl/cdf/gamma.c",
         "deps/gsl/cdf/gauss.c",
@@ -157,7 +157,7 @@ extensions.append(
               extra_link_args=[],
               include_dirs=include_dirs,
               language="c++",
-              sources=["pypolyagamma" + ext] + sources,
+              sources=["pypolyagamma/pypolyagamma" + ext] + sources,
               )
 )
 
