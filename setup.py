@@ -151,7 +151,7 @@ extensions = []
 
 # PyPolyaGamma and GSL source files
 extensions.append(
-    Extension('pypolyagamma',
+    Extension('pypolyagamma.pypolyagamma',
               depends=headers,
               extra_compile_args=["-w", "-DHAVE_INLINE"],
               extra_link_args=[],
