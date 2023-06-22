@@ -50,6 +50,9 @@ USE_OPENMP = os.environ.get('USE_OPENMP', False)
 
 #  If not using Cython, make sure the cpp files are present
 ext = ".pyx" if USE_CYTHON else ".cpp"
+
+
+"""
 if not USE_CYTHON:
     err_msg = "You must have cython installed if you are installing from Github, " \
               "since Github does not include the .cpp files."
@@ -58,6 +61,9 @@ if not USE_CYTHON:
 
     if USE_OPENMP:
         assert os.path.exists(os.path.join("pypolyagamma", "parallel.cpp")), err_msg
+"""
+
+
 
 # download GSL if we don't have it in deps
 if not os.path.exists('deps'):
@@ -147,7 +153,7 @@ extensions = []
 
 # PyPolyaGamma and GSL source files
 extensions.append(
-    Extension('pypolyagamma.pypolyagamma',
+    Extension('pypolyagamma',
               depends=headers,
               extra_compile_args=["-w", "-DHAVE_INLINE"],
               extra_link_args=[],
@@ -157,6 +163,8 @@ extensions.append(
               )
 )
 
+
+"""
 # If OpenMP is requested, compile the parallel extension
 if USE_OPENMP:
     extensions.append(
@@ -169,6 +177,8 @@ if USE_OPENMP:
                   sources=["pypolyagamma/parallel" + ext] + sources,
                   )
     )
+
+"""
 
 if USE_CYTHON:
     from Cython.Build import cythonize
@@ -192,5 +202,5 @@ setup(
         ],
     keywords=['monte-carlo', 'polya', 'gamma'],
     platforms="ALL",
-    cmd_class = {'build_ext': build_ext}
+    cmdclass = {'build_ext': build_ext}
 )
